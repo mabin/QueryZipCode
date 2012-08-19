@@ -22,5 +22,11 @@ public class TestGenerics extends TestCase {
 		OptData data = new OptData();
 		data.initData("E:\\project\\QueryZipCode\\123.xls", "E:\\project\\QueryZipCode\\ZipData.xls");
 		data.select("91436","16689 Oldham St");
+		List<AddressInfo> result = data.PackageData();
+		for (int i=0; i<result.size(); i++){
+			AddressInfo addr = result.get(i);
+			System.out.println(addr.getAddress()+"  "+addr.getCity()+"  "+addr.getState()+"  "+addr.getPhone()+"  "+addr.getZipcode());
+		}
+		OptFile.setFileData("E:\\project\\QueryZipCode\\out.xls", result);
 	}
 }

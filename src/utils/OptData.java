@@ -22,8 +22,22 @@ public class OptData {
 		database = OptFile.getDatabase(dbFilePath);
 	}
 	
+	public List<AddressInfo> PackageData(){
+		List<AddressInfo> resultList = new LinkedList<AddressInfo>();
+		Iterator<AddressInfo> iter = addrs.iterator();
+		
+		while (iter.hasNext()){
+			AddressInfo addr = iter.next();
+			addr = select(addr.getZipcode(),addr.getAddress());
+			resultList.add(addr);
+		}
+		
+		return resultList;
+	}
+	
+	
 	public AddressInfo select(String zipcode, String address){
-		AddressInfo addr = new AddressInfo();
+		AddressInfo addr = null;
 		Iterator<String[]> iter = database.iterator();
 		while (iter.hasNext()){
 			String[] data = iter.next();
@@ -31,18 +45,34 @@ public class OptData {
 				String state = data[1]; 
 				String city = data[2];
 				String phone = data[3]+optPhone();
+				
 				address = optAddress(address);
-				System.out.println(address+"  "+zipcode+"  "+state+"  "+city+"  "+phone);
+				addr = new AddressInfo();
+				addr.setAddress(address);
+				addr.setCity(city);
+				addr.setPhone(phone);
+				addr.setState(state);
+				addr.setZipcode(zipcode);
+				//System.out.println(address+"  "+zipcode+"  "+state+"  "+city+"  "+phone);
 			}
 		}
-		return null;
+		if (addr == null){
+			addr = new AddressInfo();
+			addr.setAddress(address);
+			addr.setZipcode(zipcode);
+		}
+		return addr;
 	}
 	
 	public String optAddress(String address){
-		
-		int building = Integer.parseInt(address.split(" ")[0])+58;
-		address.replaceFirst("^\\d\\b", String.valueOf(building));
-		return address;
+		String tmp = "";
+		try{
+			int building = Integer.parseInt(address.split(" ")[0])+58;
+			tmp = address.replaceFirst(address.split(" ")[0], String.valueOf(building));
+		}catch (Exception e){
+			return address;
+		}
+		return tmp;
 	}
 	
 	public String optPhone(){
