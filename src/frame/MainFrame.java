@@ -20,7 +20,6 @@ import java.awt.GridLayout;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.JTextField;
-import javax.swing.JRadioButton;
 import javax.swing.filechooser.FileFilter;
 
 import java.awt.event.ActionListener;
@@ -28,8 +27,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.io.File;
-import java.util.List;
-import java.util.Map;
 
 import javax.swing.JComboBox;
 import javax.swing.SwingConstants;
@@ -78,8 +75,8 @@ public class MainFrame extends JFrame {
 		optPanel.add(singlePanel);
 		singlePanel.setLayout(null);
 		
-		lblxml = new JLabel("源文件");
-		lblxml.setFont(new Font("微软雅黑", Font.BOLD, 25));
+		lblxml = new JLabel("111");
+		lblxml.setFont(new Font("111", Font.BOLD, 25));
 		lblxml.setBounds(10, 88, 87, 39);
 		singlePanel.add(lblxml);
 		
@@ -88,26 +85,26 @@ public class MainFrame extends JFrame {
 		singlePanel.add(srcField);
 		srcField.setColumns(10);
 		
-		GenrateBtn = new JButton("生成");
-		GenrateBtn.setFont(new Font("微软雅黑", Font.PLAIN, 20));
+		GenrateBtn = new JButton("222");
+		GenrateBtn.setFont(new Font("222", Font.PLAIN, 20));
 		GenrateBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (e.getSource() == GenrateBtn){
 				consoleArea.append(srcField.getText());
-				printLog("\r\nÉú³É³É¹¦£¬Çë´ò¿ªÄ¿±êÎÄ¼þ¼Ð");
+				printLog("\r\n333");
 				}
 			}
 		});
 		GenrateBtn.setBounds(120, 231, 249, 39);
 		singlePanel.add(GenrateBtn);
 		
-		srcBtn = new JButton("选择");
+		srcBtn = new JButton("444");
 		srcBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (arg0.getSource() == srcBtn){
 				JFileChooser singleChooser = new JFileChooser();
 				singleChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-				singleChooser.setDialogTitle("µ¼Èëµ¥¸öÎÄ¼þ ");
+				singleChooser.setDialogTitle("444");
 				
 				singleChooser.setFileFilter(new FileFilter(){
 
@@ -129,7 +126,7 @@ public class MainFrame extends JFrame {
 				int result = singleChooser.showOpenDialog(singlePanel); 
 				if (result == JFileChooser.APPROVE_OPTION){
 					srcField.setText(singleChooser.getSelectedFile().getAbsolutePath());
-					printLog("Ñ¡ÔñÁË"+singleChooser.getSelectedFile().getAbsolutePath());
+					printLog("555"+singleChooser.getSelectedFile().getAbsolutePath());
 				}
 			}
 			}
@@ -138,11 +135,9 @@ public class MainFrame extends JFrame {
 		singlePanel.add(srcBtn);
 		
 		
-		comboBox.setBounds(130, 202, 142, 21);
-		singlePanel.add(comboBox);
 		
-		JLabel label = new JLabel("输出文件");
-		label.setFont(new Font("微软雅黑", Font.BOLD, 25));
+		JLabel label = new JLabel("666");
+		label.setFont(new Font("666", Font.BOLD, 25));
 		label.setBounds(10, 167, 100, 39);
 		singlePanel.add(label);
 		
@@ -151,48 +146,20 @@ public class MainFrame extends JFrame {
 		destField.setBounds(120, 172, 556, 39);
 		singlePanel.add(destField);
 		
-		JButton destBtn = new JButton("选择");
+		JButton destBtn = new JButton("777");
 		destBtn.setBounds(686, 172, 77, 39);
 		singlePanel.add(destBtn);
 		
-		JButton restBtn = new JButton("重置");
-		restBtn.setFont(new Font("微软雅黑", Font.PLAIN, 20));
+		JButton restBtn = new JButton("8888");
+		restBtn.setFont(new Font("8888", Font.PLAIN, 20));
 		restBtn.setBounds(425, 231, 249, 39);
 		singlePanel.add(restBtn);
 		
 		JLabel lblQueryInformationFrom = new JLabel("Query Information From Zip Code");
 		lblQueryInformationFrom.setHorizontalAlignment(SwingConstants.CENTER);
-		lblQueryInformationFrom.setFont(new Font("微软雅黑", Font.BOLD, 25));
+		lblQueryInformationFrom.setFont(new Font("9999", Font.BOLD, 25));
 		lblQueryInformationFrom.setBounds(126, 23, 531, 39);
 		singlePanel.add(lblQueryInformationFrom);
-		comboBox.setSelectedIndex(0);
-		comboBox.addItemListener(new ItemListener() {
-			
-			@Override
-			public void itemStateChanged(ItemEvent e) {
-				// TODO Auto-generated method stub
-				if (e.getSource() == comboBox) {
-					
-					companyName = comboBox.getSelectedItem().toString();
-					printLog("ÄãÑ¡ÔñÁË  "+companyName);
-				}
-			}
-		});
-		
-		comboBox_1.setBounds(149, 202, 142, 21);
-		comboBox_1.setSelectedIndex(0);
-		comboBox_1.addItemListener(new ItemListener() {
-			
-			@Override
-			public void itemStateChanged(ItemEvent e) {
-				if (e.getSource() == comboBox_1) {
-					
-					// TODO Auto-generated method stub
-					companyName = comboBox_1.getSelectedItem().toString();
-					printLog("ÄãÑ¡ÔñÁË  "+companyName);
-				}
-			}
-		});
 		
 		consolepanel = new JPanel();
 		consolepanel.setBounds(0, 281, 784, 260);
