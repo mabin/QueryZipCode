@@ -1,7 +1,6 @@
 package utils;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -53,7 +52,6 @@ public final class OptFile {
 			if (workbook !=null){
 				WritableSheet sheet = workbook.createSheet("AddressInfo", 0);
 				int row = addrs.size();
-				int column = AddressInfo.class.getFields().length;
 				for (int i=0; i<row; i++){
 					AddressInfo addr = addrs.get(i);
 					Label label0 = new Label(0,i,addr.getZipcode());
